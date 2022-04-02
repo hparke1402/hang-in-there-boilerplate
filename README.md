@@ -1,18 +1,31 @@
 # Hang In There
 
-A boilerplate repo. 
+## A boilerplate repo
 
-## Set Up
+### Introduction
+  Visit Hang in There for a reprieve from stress. Create your own inspirational poster at random or with your own information!
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+### Contributors
+- Hannah Parker
+- Lauren Black
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+## Deployed Page
+- file:///Users/laurenblack/turing/Mod1/hang-in-there-boilerplate/index.html?poster-image-url=&poster-title=&poster-quote=
 
-To view your project:
+## Instructions
+- Fork this repository
+- Clone this repository to your local machine
+- To view in your browser, run command `open index.html`
 
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+## Technologies
+- Javascript
+- HTML
+- CSS
+
+## Features
+- Choose poster with image, title, and quote selected at random.
+- Create poster by filling out a form.
+- The information input on the form will be saved, and be available for anyone to use, at random.
+
+## Possible Future Extensions
+- Add another images array to cycle through more categories, like space or architecture.
