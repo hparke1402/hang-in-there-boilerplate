@@ -172,6 +172,7 @@ function generateRandomPoster() {
   randomImage.src=`${images[getRandomIndex(images)]}`;
   randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
   randomTitle.innerText= `${titles[getRandomIndex(titles)]}`;
+  addToSavedPosters()
 }
 
 function showForm() {
@@ -182,6 +183,14 @@ function showForm() {
 function showSavedPosters() {
   mainPoster.classList.add("hidden");
   mySavedPosters.classList.remove("hidden");
+  mySavedPosters.innerHTML =
+     `<article class="mini-poster">
+       <img class="mini-poster-img" src="" alt="nothin' to see here">
+       <h2 class="mini-poster-h2">Title</h2>
+       <h4 class="mini-poster-h4">Quote</h4>
+      </article>`
+  savedGrid.innerHTML =
+  `<article class="saved-posters-grid"></article>`
 }
 
 function takeMeBack() {
@@ -222,15 +231,25 @@ if (!savedPosters.includes(poster)) {
   }
 }
 
-function displaySavedPosters() {
-  savedGrid.innerHTML =
-  <article class="mini-poster">
-    <img class="mini-poster-img" src="" alt="nothin' to see here">
-    <h2 class="mini-poster-h2">Title</h2>
-    <h4 class="mini-poster-h4">Quote</h4>
-  </article>
 
+
+// function displaySavedPosters() {
+//    savedGrid.innerHTML =
+//    `<article class="saved-posters-grid"></article>`
+//   mySavedPosters.classList.remove ("hidden")
+//   mySavedPosters.innerHTML =
+//   `<article class="mini-poster">
+//     <img class="mini-poster-img" src="" alt="nothin' to see here">
+//     <h2 class="mini-poster-h2">Title</h2>
+//     <h4 class="mini-poster-h4">Quote</h4>
+//   </article>`
+  //showSavedPosters(mySavedPosters)
 }
+
+// function displayGrid() {
+//   savedGrid.innerHTML =
+//
+// }
 
 
 
