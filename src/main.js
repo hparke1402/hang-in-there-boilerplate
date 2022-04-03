@@ -133,9 +133,11 @@ var currentPoster;
 
 
 // event listeners go here 👇
-window.addEventListener("load", loadRandomImage);
-window.addEventListener("load", loadRandomTitle);
-window.addEventListener("load", loadRandomQuote);
+
+window.addEventListener("load", loadMainPoster);
+// window.addEventListener("load", loadRandomImage);
+// window.addEventListener("load", loadRandomTitle);
+// window.addEventListener("load", loadRandomQuote);
 
 randomButton.addEventListener("click", generateRandomPoster);
 
@@ -156,16 +158,12 @@ saveThisPosterButton.addEventListener("click", addToSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function loadRandomImage() {
+
+function loadMainPoster() {
   mainImage.src=`${images[getRandomIndex(images)]}`;
-}
-
-  function loadRandomTitle() {
   mainTitle.innerText= `${titles[getRandomIndex(titles)]}`;
-}
-
-function loadRandomQuote() {
   mainQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
+  addToSavedPosters()
 }
 
 function generateRandomPoster() {
@@ -183,14 +181,12 @@ function showForm() {
 function showSavedPosters() {
   mainPoster.classList.add("hidden");
   mySavedPosters.classList.remove("hidden");
-  mySavedPosters.innerHTML =
+  savedGrid.innerHTML =
      `<article class="mini-poster">
        <img class="mini-poster-img" src="" alt="nothin' to see here">
        <h2 class="mini-poster-h2">Title</h2>
        <h4 class="mini-poster-h4">Quote</h4>
       </article>`
-  savedGrid.innerHTML =
-  `<article class="saved-posters-grid"></article>`
 }
 
 function takeMeBack() {
@@ -233,23 +229,6 @@ if (!savedPosters.includes(poster)) {
 
 
 
-// function displaySavedPosters() {
-//    savedGrid.innerHTML =
-//    `<article class="saved-posters-grid"></article>`
-//   mySavedPosters.classList.remove ("hidden")
-//   mySavedPosters.innerHTML =
-//   `<article class="mini-poster">
-//     <img class="mini-poster-img" src="" alt="nothin' to see here">
-//     <h2 class="mini-poster-h2">Title</h2>
-//     <h4 class="mini-poster-h4">Quote</h4>
-//   </article>`
-  //showSavedPosters(mySavedPosters)
-}
-
-// function displayGrid() {
-//   savedGrid.innerHTML =
-//
-// }
 
 
 
