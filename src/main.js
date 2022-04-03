@@ -133,9 +133,11 @@ var currentPoster;
 
 
 // event listeners go here 👇
-window.addEventListener("load", loadRandomImage);
-window.addEventListener("load", loadRandomTitle);
-window.addEventListener("load", loadRandomQuote);
+
+window.addEventListener("load", loadMainPoster);
+// window.addEventListener("load", loadRandomImage);
+// window.addEventListener("load", loadRandomTitle);
+// window.addEventListener("load", loadRandomQuote);
 
 randomButton.addEventListener("click", generateRandomPoster);
 
@@ -156,23 +158,21 @@ saveThisPosterButton.addEventListener("click", addToSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function loadRandomImage() {
-  mainImage.src=`${images[getRandomIndex(images)]}`;
-}
 
-  function loadRandomTitle() {
-  mainTitle.innerText= `${titles[getRandomIndex(titles)]}`;
-}
-
-function loadRandomQuote() {
-  mainQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
+function loadMainPoster() {
+  currentPoster = new Poster(images[getRandomIndex(images)],titles[getRandomIndex(titles)],
+  quotes[getRandomIndex(quotes)] )
+  mainImage.src= currentPoster.imageURL
+  mainTitle.innerText= currentPoster.title
+  mainQuote.innerText=currentPoster.quote;
 }
 
 function generateRandomPoster() {
-  randomImage.src=`${images[getRandomIndex(images)]}`;
-  randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
-  randomTitle.innerText= `${titles[getRandomIndex(titles)]}`;
-  addToSavedPosters()
+  currentPoster = new Poster(images[getRandomIndex(images)],titles[getRandomIndex(titles)],
+  quotes[getRandomIndex(quotes)] )
+  randomImage.src= currentPoster.imageURL
+  randomQuote.innerText=currentPoster.quote
+  randomTitle.innerText= currentPoster.title
 }
 
 function showForm() {
@@ -183,15 +183,23 @@ function showForm() {
 function showSavedPosters() {
   mainPoster.classList.add("hidden");
   mySavedPosters.classList.remove("hidden");
-  mySavedPosters.innerHTML =
-     `<article class="mini-poster">
-       <img class="mini-poster-img" src="" alt="nothin' to see here">
-       <h2 class="mini-poster-h2">Title</h2>
-       <h4 class="mini-poster-h4">Quote</h4>
+  console.log(savedPosters)
+  savedGrid.innerHTML = ""
+for(var i = 0; i < savedPosters.length; i++) {
+  savedGrid.innerHTML +=
+     `<article class="saved-posters-grid">
+        <article class="mini-poster">
+          <img class="mini-poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+          <h2 class="mini-poster-h2">${savedPosters[i].title}</h2>
+          <h4 class="mini-poster-h4">${savedPosters[i].quote}</h4>
       </article>`
-  savedGrid.innerHTML =
-  `<article class="saved-posters-grid"></article>`
+  }
 }
+//for(var i = 0; i < mySavedPosters.length; i++) {
+
+//}
+
+
 
 function takeMeBack() {
   posterForm.classList.add("hidden");
@@ -214,7 +222,6 @@ function createNewPoster() {
   titles.push(title)
   quotes.push(quote)
   displayNewlyCreatedPoster(imageURL, title, quote);
-  addToSavedPosters(currentPoster);
   takeMeBack();
 }
 
@@ -224,32 +231,15 @@ function displayNewlyCreatedPoster(imageURL, title, quote) {
   mainQuote.innerText = `${quote}`
 }
 
-function addToSavedPosters(poster) {
-if (!savedPosters.includes(poster)) {
-  savedPosters.push(poster);
-  console.log(savedPosters);
+function addToSavedPosters() {
+  console.log("***", savedPosters)
+if (!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster);
   }
 }
 
 
 
-// function displaySavedPosters() {
-//    savedGrid.innerHTML =
-//    `<article class="saved-posters-grid"></article>`
-//   mySavedPosters.classList.remove ("hidden")
-//   mySavedPosters.innerHTML =
-//   `<article class="mini-poster">
-//     <img class="mini-poster-img" src="" alt="nothin' to see here">
-//     <h2 class="mini-poster-h2">Title</h2>
-//     <h4 class="mini-poster-h4">Quote</h4>
-//   </article>`
-  //showSavedPosters(mySavedPosters)
-}
-
-// function displayGrid() {
-//   savedGrid.innerHTML =
-//
-// }
 
 
 
